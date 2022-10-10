@@ -11,13 +11,6 @@ import Websites from '../components/Websites';
 import result from '../types/result';
 import SearchIcon from '@mui/icons-material/Search';
 
-function verify(search: any) {
-  let obj = {
-    title: 'aea',
-  }
-  return obj
-}
-
 const Home: NextPage = () => {
   const [results, setResults] = React.useState<Array<result>>([])
   const [search, setSearch] = React.useState<string | null>()
@@ -26,9 +19,12 @@ const Home: NextPage = () => {
     setSearch(e.target.value)
   }
 
-  const HandleClickSearch = () => {
-    //USAR setResults PARA MOSTRAR EL ARREGLO USAR EL OPERADOR COPIA LE DEBES PASAR UNA REFERENCIA DIFERENTE 
-    setResults([...results, verify(search)])
+  const HandleClickSearch = async () => {
+    const res = await fetch(`http://localhost:3000/api/${search}`)
+    const data = await res.json()
+
+    const results = data.results
+    setResults([...results])
   }
 
   return <>
