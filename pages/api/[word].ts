@@ -11,7 +11,7 @@ export default function handler(
 ) {
     const word = req.query.word
     const { exec } = require('child_process');
-    exec(`echo \'${word}\'`, (error, stdout, stderr) => {
+    exec(`echo \'${word}\ from terminal'`, (error:any, stdout:any, stderr:any) => {
         if (error) {
             console.error(`error: ${error.message}`);
             return;
@@ -23,7 +23,7 @@ export default function handler(
         }
         const result = stdout
         //* procesar aqui y pasar un arreglo type result*//
-        const procesado: Array<result> = [{ title: result }]
+        const procesado: Array<result> = [{ title: result ,abstract: result}]
         /////////////////////////
         res.status(200).json({ results: procesado })
     });

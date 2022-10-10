@@ -21,6 +21,7 @@ const Websites = (props: Props) => {
             <TableHead>
                 <TableRow>
                     <TableCell>Title</TableCell>
+                    <TableCell>Abstract</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -30,6 +31,7 @@ const Websites = (props: Props) => {
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
                         <TableCell align="center"><Item>{row.title}</Item></TableCell>
+                        <TableCell align="center"><Item>{row.abstract}</Item></TableCell>
                     </TableRow>
                 ))}
             </TableBody>
